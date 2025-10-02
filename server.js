@@ -5,6 +5,10 @@ require('dotenv').config();
 
 const app = express();
 
+// Debug - verificar variables de entorno
+console.log('MONGODB_URI:', process.env.MONGODB_URI ? 'CONFIGURADO' : 'NO CONFIGURADO');
+console.log('JWT_SECRET:', process.env.JWT_SECRET ? 'CONFIGURADO' : 'NO CONFIGURADO');
+
 // Conectar a MongoDB
 connectDB();
 
