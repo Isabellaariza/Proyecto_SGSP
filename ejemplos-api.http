@@ -1,0 +1,58 @@
+### Registrar usuario
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+  "nombre": "Admin Usuario",
+  "email": "admin@email.com",
+  "password": "123456",
+  "rol": "admin"
+}
+
+### Iniciar sesión
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@email.com",
+  "password": "123456"
+}
+
+### Crear producto (requiere token)
+POST http://localhost:3001/api/products
+Content-Type: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+{
+  "nombre": "Laptop HP",
+  "descripcion": "Laptop HP 15 pulgadas, 8GB RAM, 256GB SSD",
+  "precio": 800.00,
+  "stock": 5,
+  "categoria": "Electrónicos"
+}
+
+### Obtener todos los productos
+GET http://localhost:3001/api/products
+Authorization: Bearer TU_TOKEN_AQUI
+
+### Crear pedido (requiere token)
+POST http://localhost:3001/api/orders
+Content-Type: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+{
+  "items": [
+    {
+      "productoId": "ID_DEL_PRODUCTO",
+      "cantidad": 2
+    }
+  ]
+}
+
+### Obtener todos los pedidos
+GET http://localhost:3001/api/orders
+Authorization: Bearer TU_TOKEN_AQUI
+
+### Cancelar pedido
+PUT http://localhost:3001/api/orders/ID_DEL_PEDIDO/cancel
+Authorization: Bearer TU_TOKEN_AQUI
